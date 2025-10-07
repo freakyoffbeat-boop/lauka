@@ -1,0 +1,34 @@
+# Node
+node_modules/
+
+# Next.js build
+.next/
+out/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Env files
+.env
+.env.*
+
+# macOS
+.DS_Store
+
+# Vercel
+.vercel/
+
+# Packages
+# Optional npm cache directory
+.npm/
+
+# Archive and large files
+Archive.zip
+Archive/
+
+# Editor directories and files
+.vscode/
+.idea/
