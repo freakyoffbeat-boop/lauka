@@ -3,7 +3,7 @@
 import { useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { SECTIONS, Section } from "./faq-data"; // ✅ use shared data
+import { SECTIONS } from "./faq-data"; // ✅ use shared data
 
 /* ------------------------------------------------------------------ */
 /* Data model                                                          */

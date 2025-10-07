@@ -4,7 +4,6 @@ import Founders from "../components/sections/Founders";
 import ProductGrid from "../components/sections/ProductGrid";
 import TrustBadges from "../components/sections/TrustBadges";
 import Reviews from "../components/sections/Reviews";
-import CommunityGallery from "../components/sections/CommunityGallery";
 import Newsletter from "../components/sections/Newsletter";
 import AnimeCharacters from "../components/sections/AnimeCharacters";
 

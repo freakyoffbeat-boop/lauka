@@ -26,7 +26,8 @@ export default function AboutPage() {
     },
   ];
 
-  const founders = [
+  type Founder = { name: string; role: string; href: string; img: string; handle?: string };
+  const founders: Founder[] = [
     {
       name: "Ausan Gaming",
       role: "YouTuber • Gamer",
@@ -200,7 +201,9 @@ export default function AboutPage() {
               <div className="p-4">
                 <div className="font-semibold">{f.name}</div>
                 <div className="text-sm text-gray-600">{f.role}</div>
-                <div className="text-xs text-gray-500 mt-1">{f.handle}</div>
+                {f.handle ? (
+                  <div className="text-xs text-gray-500 mt-1">{f.handle}</div>
+                ) : null}
               </div>
             </div>
           ))}

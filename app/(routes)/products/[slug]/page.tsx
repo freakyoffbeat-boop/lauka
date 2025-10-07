@@ -7,7 +7,8 @@ export async function generateStaticParams() {
   return products.map(p => ({ slug: p.slug }));
 }
 
-export default function ProductDetail({ params }: { params: { slug: string } }) {
+export default function ProductDetail(props: any) {
+  const { params } = props as { params: { slug: string } };
   const product = products.find(p => p.slug === params.slug);
   if (!product) return notFound();
 

@@ -108,7 +108,7 @@ export default function HeroAnime(){
           <directionalLight position={[5,8,5]} intensity={1.1} castShadow />
           <Environment preset="city"/>
 
-          <Stage intensity={0.28} environment={null} performance={{ min: 0.65 }}>
+          <Stage {...({ intensity: 0.28, environment: null, performance: { min: 0.65 } } as any)}>
             {/* glass base (lighter to avoid glare behind text) */}
             <mesh rotation={[-Math.PI/2,0,0]} receiveShadow>
               <circleGeometry args={[6, 48]} />
