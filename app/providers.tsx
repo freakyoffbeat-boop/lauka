@@ -1,11 +1,9 @@
 "use client";
 import { ReactNode, useEffect } from "react";
-import { AnimatePresence } from "framer-motion";
 import { DefaultSeo } from "next-seo";
 import { defaultSEO } from "@/lib/seo";
 import WhatsAppFloating from "@/app/components/ui/WhatsAppFloating";
 import ChatboxToast from "@/app/components/ui/ChatboxToast";
-import AppIntroLoader from "@/app/components/sections/LoadingScreen"; // ← add
 import LoadingScreen from "./components/sections/LoadingScreen";
 
 
@@ -18,9 +16,9 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <>
       <DefaultSeo {...defaultSEO} />
-            <LoadingScreen minDuration={1600} /> {/* ← add */}
+      <LoadingScreen minDuration={1600} />
 
-      <AnimatePresence mode="wait">{children}</AnimatePresence>
+      {children}
       <WhatsAppFloating />
       <ChatboxToast />
     </>

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
 const WA = "https://wa.link/6b0n4j";
@@ -107,7 +106,7 @@ export default function TermsClient() {
       {/* subtle voxel divider */}
       <div className="mc-grid h-4 w-full" />
 
-      {/* Terms list */}
+      {/* Terms list (no animations) */}
       <section className="mx-auto max-w-6xl px-4 md:px-6 py-10">
         <div className="divide-y divide-gray-200 border border-gray-200 rounded-2xl bg-white">
           {SECTIONS.map((sec, i) => (
@@ -115,6 +114,7 @@ export default function TermsClient() {
               <button
                 onClick={() => setOpen(open === i ? null : i)}
                 className="w-full flex items-center justify-between px-4 md:px-5 py-4 text-left font-semibold"
+                aria-expanded={open === i}
               >
                 {sec.title}
                 <span
@@ -126,21 +126,13 @@ export default function TermsClient() {
                 </span>
               </button>
 
-              <AnimatePresence initial={false}>
-                {open === i && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ type: "tween", duration: 0.25 }}
-                    className="overflow-hidden"
-                  >
-                    <div className="px-4 md:px-5 pb-4 text-gray-700 text-sm">
-                      {sec.content}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {open === i && (
+                <div className="overflow-hidden">
+                  <div className="px-4 md:px-5 pb-4 text-gray-700 text-sm">
+                    {sec.content}
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>

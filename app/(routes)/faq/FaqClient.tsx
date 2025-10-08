@@ -3,13 +3,11 @@
 import { useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { SECTIONS } from "./faq-data"; // ✅ use shared data
+import { SECTIONS, Section } from "./faq-data"; // ✅ use shared data
 
 /* ------------------------------------------------------------------ */
 /* Data model                                                          */
 /* ------------------------------------------------------------------ */
-type QA = { q: string; a: string; tags?: string[] };
-type Section = { id: string; title: string; icon: string; qa: QA[] };
 
 
 
@@ -139,7 +137,9 @@ export default function FaqClient() {
             <div className="mt-6 flex flex-wrap gap-3">
               <a className="pixel-btn whatsapp" href="https://wa.link/6b0n4j" target="_blank" rel="noopener noreferrer">💬 Chat on WhatsApp</a>
               <Link href="/policies/shipping-returns" className="pixel-btn bg-white text-black">📄 Shipping & Returns</Link>
-              <Link href="/policies/privacy-security" className="pixel-btn bg-white text-black">🔐 Privacy & Security</Link>
+<Link href="/policies/privacy-security" className="pixel-btn bg-white text-black">
+  🔐 Privacy & Security
+</Link>
             </div>
           </div>
         </section>

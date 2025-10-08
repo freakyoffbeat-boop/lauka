@@ -1,7 +1,8 @@
 // app/(routes)/about/page.tsx
+import type { Metadata } from "next";
 import Image from "next/image";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "About – lauska.shop",
   description:
     "Lauska brings the joy of Minecraft into the real world with premium magnetic blocks. Safe materials, modular design, and kits inspired by biomes.",
@@ -12,27 +13,29 @@ export default function AboutPage() {
     {
       title: "Kid-safe by design",
       icon: "🧒",
-      text: "Enclosed neodymium magnets, non-toxic inks, rounded edges, and durable PET laminate on ABS.",
+      text:
+        "Enclosed neodymium magnets, non-toxic inks, rounded edges, and durable PET laminate on ABS.",
     },
     {
       title: "Built to last",
       icon: "🧱",
-      text: "Scratch-resistant surface, strong snap, and consistent grid so your worlds stay modular forever.",
+      text:
+        "Scratch-resistant surface, strong snap, and consistent grid so your worlds stay modular forever.",
     },
     {
       title: "Play = learning",
       icon: "🧠",
-      text: "Creativity, spatial thinking, and collaboration — class projects or rainy-day builds, it all counts.",
+      text:
+        "Creativity, spatial thinking, and collaboration — class projects or rainy-day builds, it all counts.",
     },
   ];
 
-  type Founder = { name: string; role: string; href: string; img: string; handle?: string };
-  const founders: Founder[] = [
+  const founders = [
     {
       name: "Ausan Gaming",
       role: "YouTuber • Gamer",
       href: "https://youtube.com/@AusanGaming",
-      img: "/founders/a.png", // add your image
+      img: "/founders/a.png",
     },
     {
       name: "Mr. Lapis",
@@ -49,34 +52,47 @@ export default function AboutPage() {
   ];
 
   const timeline = [
-    { y: "2023", t: "Idea", d: "A simple goal: bring voxel builds off-screen with real blocks that feel magical." },
-    { y: "2024", t: "Prototypes", d: "Grid, magnet strength, and skins perfected. First classroom pilots." },
-    { y: "2025", t: "Lauska.shop", d: "Our store launches with biome kits, creator collabs, and school bundles." },
+    {
+      y: "2023",
+      t: "Idea",
+      d:
+        "A simple goal: bring voxel builds off-screen with real blocks that feel magical.",
+    },
+    {
+      y: "2024",
+      t: "Prototypes",
+      d: "Grid, magnet strength, and skins perfected. First classroom pilots.",
+    },
+    {
+      y: "2025",
+      t: "Lauska.shop",
+      d:
+        "Our store launches with biome kits, creator collabs, and school bundles.",
+    },
   ];
 
-  // JSON-LD Organization
-  const orgJsonLd = {
+  // ✅ JSON-LD as a pure JSON string (no JSX/functions)
+  const orgJsonLdStr = JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Lauska",
     url: "https://lauska.shop",
     sameAs: [
-      "https://www.youtube.com/", // replace with real
+      "https://www.youtube.com/",
       "https://www.instagram.com/",
       "https://twitter.com/",
     ],
     logo: "https://lauska.shop/logo.png",
     description:
       "Lauska builds premium magnetic block kits inspired by voxel/Minecraft worlds.",
-  };
+  });
 
   return (
     <main className="bg-[#f7f8fb] text-[#0e1220]">
-      {/* SEO JSON-LD */}
+      {/* SEO JSON-LD (pure string) */}
       <script
         type="application/ld+json"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: orgJsonLdStr }}
       />
 
       {/* HERO */}
@@ -94,10 +110,7 @@ export default function AboutPage() {
             </p>
 
             <div className="mt-6 flex flex-wrap gap-3">
-              <a
-                href="/products"
-                className="pixel-btn bg-white border border-gray-300"
-              >
+              <a href="/products" className="pixel-btn bg-white border border-gray-300">
                 🧱 Explore Kits
               </a>
               <a
@@ -111,21 +124,21 @@ export default function AboutPage() {
             </div>
           </div>
 
-      {/* Hero video */}
-<div className="rounded-2xl border border-gray-200 bg-white/70 shadow-sm p-3">
-  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
-    <video
-      src="/about/LAUSKA.mp4"
-      autoPlay
-      loop
-      muted
-      playsInline
-      preload="metadata"
-      className="object-cover w-full h-full rounded-xl"
-      poster="/about/hero-placeholder.jpg" // optional fallback image
-    />
-  </div>
-</div>
+          {/* Hero video */}
+          <div className="rounded-2xl border border-gray-200 bg-white/70 shadow-sm p-3">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
+              <video
+                src="/about/LAUSKA.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                className="object-cover w-full h-full rounded-xl"
+                poster="/about/hero-placeholder.jpg"
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -134,9 +147,7 @@ export default function AboutPage() {
         <h2 className="text-2xl md:text-3xl font-[family:var(--header-font)]">
           What we make
         </h2>
-        <p className="text-gray-600 mt-1">
-          Three pillars define every Lauska kit.
-        </p>
+        <p className="text-gray-600 mt-1">Three pillars define every Lauska kit.</p>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
           {values.map((v) => (
@@ -155,21 +166,9 @@ export default function AboutPage() {
       {/* SAFETY STRIP */}
       <section className="border-y bg-white/70">
         <div className="mx-auto max-w-6xl px-4 md:px-6 py-6 grid sm:grid-cols-3 gap-3 text-sm">
-          <SafetyTip
-            icon="🧲"
-            title="Sealed magnets"
-            text="Secure and tuned for the perfect snap."
-          />
-          <SafetyTip
-            icon="🧪"
-            title="Non-toxic inks"
-            text="Vivid skins, lab-tested for safety."
-          />
-          <SafetyTip
-            icon="🧼"
-            title="Easy clean"
-            text="Wipe with a soft damp cloth; dry before storing."
-          />
+          <SafetyTip icon="🧲" title="Sealed magnets" text="Secure and tuned for the perfect snap." />
+          <SafetyTip icon="🧪" title="Non-toxic inks" text="Vivid skins, lab-tested for safety." />
+          <SafetyTip icon="🧼" title="Easy clean" text="Wipe with a soft damp cloth; dry before storing." />
         </div>
       </section>
 
@@ -201,9 +200,6 @@ export default function AboutPage() {
               <div className="p-4">
                 <div className="font-semibold">{f.name}</div>
                 <div className="text-sm text-gray-600">{f.role}</div>
-                {f.handle ? (
-                  <div className="text-xs text-gray-500 mt-1">{f.handle}</div>
-                ) : null}
               </div>
             </div>
           ))}
@@ -213,9 +209,7 @@ export default function AboutPage() {
       {/* VALUES */}
       <section className="mx-auto max-w-6xl px-4 md:px-6 pb-10">
         <div className="rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-sm">
-          <h3 className="text-xl md:text-2xl font-[family:var(--header-font)]">
-            Our values
-          </h3>
+          <h3 className="text-xl md:text-2xl font-[family:var(--header-font)]">Our values</h3>
           <ul className="mt-4 grid md:grid-cols-2 gap-3 text-sm text-gray-700">
             <li>• Play is meaningful — we design for curiosity and agency.</li>
             <li>• Safety isn’t a feature — it’s the baseline.</li>
@@ -228,15 +222,10 @@ export default function AboutPage() {
 
       {/* TIMELINE */}
       <section className="mx-auto max-w-6xl px-4 md:px-6 pb-14">
-        <h2 className="text-2xl md:text-3xl font-[family:var(--header-font)]">
-          Our journey
-        </h2>
+        <h2 className="text-2xl md:text-3xl font-[family:var(--header-font)]">Our journey</h2>
         <div className="mt-6 grid gap-4">
           {timeline.map((e) => (
-            <div
-              key={e.y}
-              className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm"
-            >
+            <div key={e.y} className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
               <div className="text-sm text-gray-500">{e.y}</div>
               <div className="font-semibold">{e.t}</div>
               <p className="text-sm text-gray-700 mt-1">{e.d}</p>
@@ -248,9 +237,7 @@ export default function AboutPage() {
       {/* SOCIAL PROOF */}
       <section className="border-t bg-white/70">
         <div className="mx-auto max-w-6xl px-4 md:px-6 py-10">
-          <div className="text-center text-sm text-gray-500">
-            As seen with creators and communities
-          </div>
+          <div className="text-center text-sm text-gray-500">As seen with creators and communities</div>
           <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-4 items-center opacity-80">
             <Logo name="Creator A" />
             <Logo name="Creator B" />
@@ -263,28 +250,16 @@ export default function AboutPage() {
       {/* CTA */}
       <section className="mx-auto max-w-6xl px-4 md:px-6 py-14">
         <div className="rounded-2xl bg-[#0e1220] text-white p-8 md:p-10">
-          <h2 className="text-3xl font-[family:var(--header-font)]">
-            Let’s build together.
-          </h2>
+          <h2 className="text-3xl font-[family:var(--header-font)]">Let’s build together.</h2>
           <p className="mt-3 text-white/80">
-            Bulk orders for schools, custom kits for events, or just a question
-            about your first biome — we’re here.
+            Bulk orders for schools, custom kits for events, or just a question about your first biome — we’re here.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            <a
-              href="https://wa.link/6b0n4j"
-              className="pixel-btn whatsapp"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href="https://wa.link/6b0n4j" className="pixel-btn whatsapp" target="_blank" rel="noopener noreferrer">
               💬 Chat on WhatsApp
             </a>
-            <a href="/products" className="pixel-btn bg-white text-black">
-              🧱 Browse Kits
-            </a>
-            <a href="/support" className="pixel-btn bg-white text-black">
-              🧰 Support
-            </a>
+            <a href="/products" className="pixel-btn bg-white text-black">🧱 Browse Kits</a>
+            <a href="/support" className="pixel-btn bg-white text-black">🧰 Support</a>
           </div>
         </div>
       </section>
@@ -294,15 +269,7 @@ export default function AboutPage() {
 
 /* ------------------- tiny presentational helpers ------------------- */
 
-function SafetyTip({
-  icon,
-  title,
-  text,
-}: {
-  icon: string;
-  title: string;
-  text: string;
-}) {
+function SafetyTip({ icon, title, text }: { icon: string; title: string; text: string }) {
   return (
     <div className="rounded-xl border border-gray-200 bg-white px-4 py-3 flex items-center gap-3 hover:shadow-sm">
       <span className="text-lg">{icon}</span>

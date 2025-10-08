@@ -41,18 +41,7 @@ function Particles({ count = 80, type = "sakura" as "sakura" | "speed" }) {
     </points>
   );
 }
-<section className="hero-section relative h-[92vh] min-h-[720px] overflow-hidden">
-  <div className="hero-canvas-wrap absolute inset-0">
-    <Canvas>
-      {/* ... your lights/scene ... */}
 
-      {/* Html overlay */}
-      <Html fullscreen className="hero-html" zIndexRange={[0, 0]}>
-        {/* ... overlay content ... */}
-      </Html>
-    </Canvas>
-  </div>
-   </section>
 /* ---------- voxel ---------- */
 function Voxel({ p, c }: { p: [number,number,number]; c: string }) {
   const m = useRef<THREE.Mesh>(null!);
@@ -108,7 +97,7 @@ export default function HeroAnime(){
           <directionalLight position={[5,8,5]} intensity={1.1} castShadow />
           <Environment preset="city"/>
 
-          <Stage {...({ intensity: 0.28, environment: null, performance: { min: 0.65 } } as any)}>
+          <Stage intensity={0.28} environment={null}>
             {/* glass base (lighter to avoid glare behind text) */}
             <mesh rotation={[-Math.PI/2,0,0]} receiveShadow>
               <circleGeometry args={[6, 48]} />
